@@ -1,0 +1,27 @@
+{
+  "name": "spacehq",
+  "version": "1.0.0",
+  "description": "SpaceHQ — secure server-side authenticated dashboard (module-free skeleton)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --experimental-sqlite server.js",
+    "dev": "NODE_ENV=development node --experimental-sqlite server.js",
+    "hash": "node scripts/hash-password.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-session": "^1.18.0",
+    "helmet": "^7.1.0",
+    "qrcode": "^1.5.4"
+  },
+  "optionalDependencies": {
+    "mongodb": "^6.10.0"
+  }
+}
