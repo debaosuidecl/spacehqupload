@@ -3,7 +3,7 @@ import axios from "axios";
 
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "https://update.shea.biz/api"
+    ? "https://update.spacehq.ca/api"
     : "http://localhost:5000/api";
 
 console.log(process.env.NODE_ENV, "NODE ENV");

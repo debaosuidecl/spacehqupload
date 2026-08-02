@@ -5,15 +5,24 @@ dotenv.config();
 
 // const redis = require("redis");
 const process_uploads = require("../utils/process_uploads");
-// const port = 6379;
+const POLL_INTERVAL_MS = Number(process.env.UPLOAD_PROCESS_INTERVAL_MS || 15000);
 
-(async () => {
+const run = async () => {
   await connectDB();
-  await delay(1000);
-  await process_uploads();
-  // await cidattach(client);
-  // await cidattachipquality(client);
-  // await downloadcustom(client);
-  await delay(3000);
+
+  while (true) {
+    try {
+      await delay(1000);
+      await process_uploads();
+    } catch (error) {
+      console.error("Upload worker iteration failed:", error);
+    }
+
+    await delay(POLL_INTERVAL_MS);
+  }
+};
+
+run().catch((error) => {
+  console.error("Upload worker failed to start:", error);
   process.exit(1);
-})();
+});
