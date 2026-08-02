@@ -4,7 +4,7 @@ set -euo pipefail
 SERVER_USER="root"
 SERVER_HOST="206.81.12.55"
 REMOTE_DIR="/var/www/marketing"
-SSH_KEY="${HOME}/.ssh/pine"  # Path to your private key
+SSH_KEY="${HOME}/.ssh/spacehq_deploy_key"  # Path to your private key
 
 # SSH options with your key
 SSH_OPTS=(-i "${SSH_KEY}" -o StrictHostKeyChecking=no)
