@@ -57,10 +57,13 @@ const process_uploads = async () => {
     let user_id_part = fileUrl.split("/")[2];
     let file_name_part = fileUrl.split("/")[3];
 
-    fs.ensureDirSync(path.join(__dirname, "..", "destinations", user_id_part));
+    fs.ensureDirSync(
+      path.join(__dirname, "..", "destinations", user_id_part, "spacehq"),
+    );
+
     const result = await extractZip(
       path.join(__dirname, "..", "zips", user_id_part, file_name_part),
-      path.join(__dirname, "..", "destinations", user_id_part),
+      path.join(__dirname, "..", "destinations", user_id_part, "spacehq"),
     );
     //
 
